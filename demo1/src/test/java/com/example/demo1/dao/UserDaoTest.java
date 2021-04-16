@@ -9,6 +9,16 @@ import java.util.List;
 
 public class UserDaoTest {
     @Test
+    public void testInsert(){
+        SqlSession session = MybatisUtil.getSqlSession();
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        User user = new User("yucheng","123123","yycheng");
+        int i = userDao.insertUser(user);
+        System.out.println(i);
+        session.commit(); //提交事务,重点!不写的话不会提交到数据库
+        session.close();
+    }
+    @Test
     public void test(){
         //get sqlSession Object
         SqlSession sqlSession = MybatisUtil.getSqlSession();

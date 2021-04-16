@@ -6,3 +6,8 @@ CREATE TABLE   user
     password VARCHAR(50) NOT NULL
 
 ) AUTO_INCREMENT = 100;
+
+INSERT INTO tea.user (username, email, password) VALUES (#{username},#{email},#{password}
+
+
+

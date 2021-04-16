@@ -1,9 +1,9 @@
 package com.example.demo1.bean;
 
+import com.example.demo1.pojo.User;
 import com.example.demo1.utils.Impl.RegisterImpl;
 import com.example.demo1.utils.Impl.SignUpUtilImpl;
 import com.example.demo1.utils.RegisterUtil;
-
 import javax.faces.component.html.HtmlInputText;
 
 public class UserBean {
