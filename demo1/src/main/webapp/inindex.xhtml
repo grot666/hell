@@ -8,19 +8,13 @@
 <f:view>
     <h:outputLabel value="Hello, world"/>
 </f:view>
-<h:head>
-    <title>First example using JSF 2</title>
-</h:head>
-
+<!--this is the index of the index-->
 <h:body>
-    <h:outputLabel>hello World !</h:outputLabel>
-    <h1>First example JSF 2 - login.xhtml</h1>
-    <h:form id="form">
-
-        <h:inputText  id="name" value="#{userBean.name}" ></h:inputText><br/>
-        <h:inputText  id="input" binding="#{userBean.password}" /><br/>
-        <h:commandButton value="Souhaiter la bienvenue" action="#{userBean.login}" />
-    </h:form>
+    <br/>
+    <a href="sign_in.xhtml"> sign in</a>
+    <br/>
+    <a href="sign_up.xhtml"> sign up</a>
+    <br/>
+    <a href="index.xhtml"> index </a>
 </h:body>
-
 </html>
