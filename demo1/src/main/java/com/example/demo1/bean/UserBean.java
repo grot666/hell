@@ -37,15 +37,15 @@ public class UserBean implements Serializable {
         this.password = password;
     }
 
-    public String login(){
+    public String login() {
 
-        return controller.loginAction(new User(name,password,email));
+        return controller.loginAction(new User(name, password, email));
 
     }
 
-    public String signUp(){
+    public String signUp() {
 
-        return controller.signUpAction(new User(name,password,email));
+        return controller.signUpAction(new User(name, password, email));
     }
 
     public String getEmail() {
@@ -56,10 +56,11 @@ public class UserBean implements Serializable {
         this.email = email;
     }
 
-    public String logout(){
-       return controller.logoutAction();
+    public String logout() {
+        return controller.logoutAction();
     }
-    public List<User> getAllUser(){
+
+    public List<User> getAllUser() {
         return UserActionController.getAllUserAction();
     }
 

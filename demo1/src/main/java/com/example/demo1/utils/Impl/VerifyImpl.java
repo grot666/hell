@@ -11,16 +11,16 @@ public class VerifyImpl implements IVerifyUtil {
     @Override
     public boolean verifyAccount(User user) {
         FacesContext context = FacesContext.getCurrentInstance();
-        if (context.getExternalContext().getSessionMap().get("userid") == null){
+        if (context.getExternalContext().getSessionMap().get("userid") == null) {
             context.getExternalContext().getSessionMap().put("userid", user.getId());
-        }else{
+        } else {
             //context.getExternalContext().getSessionMap().put("id", 9);
             return !context.getExternalContext().getSessionMap().get("userid").equals(user.getId());
         }
         return true;
     }
 
-    public void logout(){
+    public void logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
 }

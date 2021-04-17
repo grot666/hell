@@ -23,36 +23,33 @@ public class UserActionController {
     }
 
 
-
-
-    public String logoutAction(){
+    public String logoutAction() {
         new VerifyImpl().logout();
         return "index";
     }
 
 
-    public String loginAction(User user){
-        if (new LoginImpl().loginCheck(user.getEmail(),user.getPassword())){
+    public String loginAction(User user) {
+        if (new LoginImpl().loginCheck(user.getEmail(), user.getPassword())) {
 
-            if (new VerifyImpl().verifyAccount(user)){
+            if (new VerifyImpl().verifyAccount(user)) {
                 return "success";
             }
 
         }
         return "failed";
     }
-    public String signUpAction(User user){
 
-        if (new SignUpUtilImpl().SignUpResult(user.getEmail(), user.getPassword())){
+    public String signUpAction(User user) {
 
-            if (new RegisterImpl().registerUser(user)){
+        if (new SignUpUtilImpl().SignUpResult(user.getEmail(), user.getPassword())) {
+
+            if (new RegisterImpl().registerUser(user)) {
                 return "success";
-            }
-            else {
+            } else {
                 return "error_register";
             }
-        }
-        else {
+        } else {
             return "failed";
         }
     }

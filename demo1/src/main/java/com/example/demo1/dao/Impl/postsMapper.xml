@@ -5,4 +5,25 @@
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IPostsDao">
 
+    <insert id="insertPostToBaseDeDonneesParMybatisFrameWorkToDayNiceImGladLoL">
+        INSERT INTO tea.posts
+        VALUES (#{param1}, #{param2});
+    </insert>
+    <select id="selectFriendsPost" resultType="com.example.demo1.pojo.Posts">
+
+        SELECT posts.aId,posts.content
+        FROM tea.posts
+        WHERE aId IN
+              (select distinct first.aim_id
+               from tea.relation First,
+                    tea.relation SECOND
+               WHERE First.aim_id = SECOND.host_id
+                 AND First.host_id = SECOND.aim_id
+                 AND First.host_id = #{aid})
+        OR aid = #{aid}
+
+
+    </select>
+
+
 </mapper>

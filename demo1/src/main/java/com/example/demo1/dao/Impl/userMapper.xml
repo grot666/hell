@@ -4,15 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IUserDao">
-    <insert id="insertUser" parameterType="com.example.demo1.pojo.User" >
+    <insert id="insertUser" parameterType="com.example.demo1.pojo.User">
         INSERT INTO tea.user (username, email, password)
-        VALUES (#{username},#{email},#{password})
+        VALUES (#{username}, #{email}, #{password})
     </insert>
     <!--    select query-->
-   <select id="getUserList" resultType="com.example.demo1.pojo.User">
-       SELECT * from tea.user
-   </select>
+    <select id="getUserList" resultType="com.example.demo1.pojo.User">
+        SELECT *
+        from tea.user
+    </select>
     <select id="returnUserId" resultType="java.lang.Integer">
-        SELECT id from tea.user where email = #{email};
+        SELECT id
+        from tea.user
+        where email = #{email};
     </select>
 </mapper>

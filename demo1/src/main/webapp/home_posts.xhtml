@@ -8,17 +8,18 @@
 <f:view>
     <h:outputLabel value="Hello, world"/>
 </f:view>
-<h:body>
-    <h1>Post</h1>
+<h:body style="background-color: darkcyan">
 
+    <h1>Post</h1>
+    <a href="home_posts_list.xhtml">list of posts</a>
     <h:form>
         <table>
             <tr>
-                <td valign="top">Address :</td>
-                <td><h:inputTextarea value="#{user.address}" cols="30" rows="10" /></td>
+                <td valign="top">note :</td>
+                <td><h:inputTextarea value="#{postBean.content}" cols="30" rows="10"/></td>
             </tr>
         </table>
-<!--        <h:commandButton/>-->
+        <h:commandButton action="#{postBean.insertPost}" value="push"/>
     </h:form>
 
 </h:body>

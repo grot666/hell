@@ -75,6 +75,15 @@
         </navigation-case>
     </navigation-rule>
 
+    <navigation-rule>
+        <from-view-id>/home_posts.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>succeed</from-outcome>
+            <to-view-id>/home_posts_list.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
 
 
 <managed-bean>

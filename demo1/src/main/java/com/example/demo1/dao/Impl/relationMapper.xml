@@ -4,67 +4,77 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IRelationDao">
-<!--insert Relation-->
+    <!--insert Relation-->
     <insert id="inserRelation" parameterType="com.example.demo1.pojo.Relation">
-        INSERT INTO tea.relation (host_id, aim_id) VALUES (#{hostId},#{aimId});
+        INSERT INTO tea.relation (host_id, aim_id)
+        VALUES (#{hostId}, #{aimId});
     </insert>
-<!--get one`s friends-->
+    <!--get one`s friends-->
     <select id="getOnceFriends" resultType="com.example.demo1.pojo.Relation">
-    select distinct First.host_id, first.aim_id
-    from tea.relation First ,tea.relation SECOND
-    WHERE First.aim_id = SECOND.host_id
-      AND First.host_id = SECOND.aim_id
-      AND First.host_id=#{hostId};
+        select distinct First.host_id, first.aim_id
+        from tea.relation First,
+             tea.relation SECOND
+        WHERE First.aim_id = SECOND.host_id
+          AND First.host_id = SECOND.aim_id
+          AND First.host_id = #{hostId};
     </select>
-<!--get common friends-->
+    <!--get common friends-->
     <select id="getCommonFriends" resultType="com.example.demo1.pojo.Relation">
-        select 0,a.aim_id
-        from(
-             (select distinct first.aim_id
-              from tea.relation as First ,tea.relation as SECOND
-              WHERE First.aim_id = SECOND.host_id
-                AND First.host_id = SECOND.aim_id
-                AND First.host_id=#{param1}) AS a
-                ,
-             (select distinct  First1.aim_id
-              from tea.relation as First1 ,tea.relation as SECOND1
-              WHERE First1.aim_id = SECOND1.host_id
-                AND First1.host_id = SECOND1.aim_id
-                AND First1.host_id=#{param2}) AS b
-            )
+        select 0, a.aim_id
+        from (
+              (select distinct first.aim_id
+               from tea.relation as First,
+                    tea.relation as SECOND
+               WHERE First.aim_id = SECOND.host_id
+                 AND First.host_id = SECOND.aim_id
+                 AND First.host_id = #{param1}) AS a,
+              (select distinct First1.aim_id
+               from tea.relation as First1,
+                    tea.relation as SECOND1
+               WHERE First1.aim_id = SECOND1.host_id
+                 AND First1.host_id = SECOND1.aim_id
+                 AND First1.host_id = #{param2}) AS b
+                 )
         where a.aim_id = b.aim_id;
     </select>
-<!--    check if the relation exist-->
+    <!--    check if the relation exist-->
     <select id="relationExist" resultType="com.example.demo1.pojo.Relation">
-        SELECT * from tea.relation where aim_id = #{aimId} AND host_id = #{hostId}
+        SELECT *
+        from tea.relation
+        where aim_id = #{aimId}
+          AND host_id = #{hostId}
     </select>
     <select id="getOnceFriendList" resultType="com.example.demo1.pojo.User">
 
-        select distinct user.username,user.password,user.email
-        from tea.relation First ,tea.relation SECOND,tea.user
+        select distinct user.username, user.password, user.email
+        from tea.relation First,
+             tea.relation SECOND,
+             tea.user
         WHERE First.aim_id = SECOND.host_id
           AND First.host_id = SECOND.aim_id
-          AND First.host_id=#{hostID}
+          AND First.host_id = #{hostID}
           AND First.aim_id = user.id;
     </select>
     <select id="getComFriendList" resultType="com.example.demo1.pojo.User">
 
-        select distinct usr.username,usr.password,usr.email
-        from(
-                select a.aim_id
-                from(
-                     (select distinct first.aim_id
-                      from tea.relation as First ,tea.relation as SECOND
-                      WHERE First.aim_id = SECOND.host_id
-                        AND First.host_id = SECOND.aim_id
-                        AND First.host_id=#{param1}) a ,
-                     (select distinct  First1.aim_id
-                      from tea.relation as First1 ,tea.relation as SECOND1
-                      WHERE First1.aim_id = SECOND1.host_id
-                        AND First1.host_id = SECOND1.aim_id
-                        AND First1.host_id=#{param2}) b)
-                where a.aim_id = b.aim_id) as rel,
-            tea.user as usr
+        select distinct usr.username, usr.password, usr.email
+        from (
+                 select a.aim_id
+                 from (
+                       (select distinct first.aim_id
+                        from tea.relation as First,
+                             tea.relation as SECOND
+                        WHERE First.aim_id = SECOND.host_id
+                          AND First.host_id = SECOND.aim_id
+                          AND First.host_id = #{param1}) a,
+                       (select distinct First1.aim_id
+                        from tea.relation as First1,
+                             tea.relation as SECOND1
+                        WHERE First1.aim_id = SECOND1.host_id
+                          AND First1.host_id = SECOND1.aim_id
+                          AND First1.host_id = #{param2}) b)
+                 where a.aim_id = b.aim_id) as rel,
+             tea.user as usr
         where usr.id = rel.aim_id;
 
 

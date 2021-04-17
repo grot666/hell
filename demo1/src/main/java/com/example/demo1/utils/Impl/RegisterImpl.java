@@ -21,10 +21,10 @@ public class RegisterImpl implements IRegisterUtil {
         session.commit(); //gg
         session.close();
 
-        if (i == 1){
+        if (i == 1) {
             return true;
 
-        }else {
+        } else {
             return false;
             //help users recognize ,diagnose,and recover!
         }

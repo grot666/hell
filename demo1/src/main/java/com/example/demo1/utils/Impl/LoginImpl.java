@@ -18,7 +18,7 @@ public class LoginImpl implements ILoginUtil {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
         List<User> userList = userDao.getUserList();
 
-        for (User user : userList){
+        for (User user : userList) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 return true;
             //email should be unique

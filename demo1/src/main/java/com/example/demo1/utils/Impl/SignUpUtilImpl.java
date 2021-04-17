@@ -18,7 +18,7 @@ public class SignUpUtilImpl implements ISignUpUtil {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
         List<User> userList = userDao.getUserList();
 
-        for (User user : userList){
+        for (User user : userList) {
             if (user.getEmail().equals(email))
                 return false;
             //email should be unique

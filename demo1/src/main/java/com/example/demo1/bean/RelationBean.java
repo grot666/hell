@@ -60,7 +60,7 @@ public class RelationBean implements Serializable {
     public List<User> getComFriendList() {
         SqlSession session = MybatisUtil.getSqlSession();
         IRelationDao relationDao = session.getMapper(IRelationDao.class);
-        return relationDao.getComFriendList(hostId,aimId);
+        return relationDao.getComFriendList(hostId, aimId);
 
     }
 
@@ -73,25 +73,24 @@ public class RelationBean implements Serializable {
     }
 
     private String inputText3;
-    public String doItJust(){
+
+    public String doItJust() {
 
         SqlSession session = MybatisUtil.getSqlSession();
         IRelationDao relationDao = session.getMapper(IRelationDao.class);
-        List<User> userList = relationDao.getComFriendList(hostId,aimId);
-        if (userList.isEmpty()){
+        List<User> userList = relationDao.getComFriendList(hostId, aimId);
+        if (userList.isEmpty()) {
             inputText3 = "no common friends";
-        }else {
+        } else {
             inputText3 = userList.toString();
         }
 
 
-
-            inputText.setValue(this.aimId);
-            inputText2.setValue(this.hostId);
-
+        inputText.setValue(this.aimId);
+        inputText2.setValue(this.hostId);
 
 
-                inputText.setStyle("background-color.green");
+        inputText.setStyle("background-color.green");
 
 
         String middle = userList.toString();
@@ -104,9 +103,9 @@ public class RelationBean implements Serializable {
     RelationController controller =
             new RelationController();
 
-    public void addRelation(){
-    //System.out.println(aimId+""+hostId);
-        controller.addAction(new Relation(hostId,aimId));
+    public void addRelation() {
+        //System.out.println(aimId+""+hostId);
+        controller.addAction(new Relation(hostId, aimId));
 
     }
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:body style="background-color: darkcyan">
+    <hr/>
+    <br/>
+    <a href="home.xhtml">back</a>
+    <br/>
+    <p>those are your friends master Piece and your posts </p>
+    <c:forEach items="#{postBean.postsList}" var="Posts">
+
+
+        <br/>
+        <p style="color: aliceblue">#{Posts.authorId}</p>
+        <hr/>
+        <h:outputLabel value="#{Posts.content}" style="background-color: grey"/>
+        <hr/>
+        <br/>
+
+
+    </c:forEach>
+</h:body>
+</html>
