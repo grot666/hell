@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<h:body>
+
+    <br/>
+    <a href="home_relations.xhtml">back</a>
+    <br/>
+
+    <h:form>
+       aimid <h:inputText id="aimId" value="#{relationBean.aimId}"/> <br/>
+        <h:commandButton value="search" action="#{relationBean.doItJust}"/><br/>
+
+        <h:inputText id="inputtext" binding="#{relationBean.inputText}"/>
+        <br/><h:inputText id="inputtext2" binding="#{relationBean.inputText2}"/>
+        <br/><h:inputTextarea id="iarea" binding="#{relationBean.inputTextarea}"/>
+        <br/><h:outputLabel id="il" value="#{relationBean.inputText3}"/>
+     </h:form>
+<!--    <c:forEach items="#{relationBean.comFriendList}" var="User">-->
+<!--        <span>ID</span>-->
+<!--        <p>#{User.id}</p>-->
+
+<!--        <span>name</span>-->
+<!--        <p>#{User.username}</p>-->
+<!--    </c:forEach>-->
+    <a href="home.xhtml">back to home</a>
+</h:body>
+</html>

@@ -11,5 +11,6 @@ public interface IRelationDao {
     List<Relation> getCommonFriends(int hostId ,int aimID);
     Relation relationExist(Relation relation);
     List<User> getOnceFriendList(int hostID);
+    List<User> getComFriendList(int hostID,int aimId );
     void inserRelation(Relation relation);
 }

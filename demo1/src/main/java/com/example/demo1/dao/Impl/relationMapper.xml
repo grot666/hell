@@ -47,4 +47,26 @@
           AND First.host_id=#{hostID}
           AND First.aim_id = user.id;
     </select>
+    <select id="getComFriendList" resultType="com.example.demo1.pojo.User">
+
+        select distinct usr.username,usr.password,usr.email
+        from(
+                select a.aim_id
+                from(
+                     (select distinct first.aim_id
+                      from tea.relation as First ,tea.relation as SECOND
+                      WHERE First.aim_id = SECOND.host_id
+                        AND First.host_id = SECOND.aim_id
+                        AND First.host_id=#{param1}) a ,
+                     (select distinct  First1.aim_id
+                      from tea.relation as First1 ,tea.relation as SECOND1
+                      WHERE First1.aim_id = SECOND1.host_id
+                        AND First1.host_id = SECOND1.aim_id
+                        AND First1.host_id=#{param2}) b)
+                where a.aim_id = b.aim_id) as rel,
+            tea.user as usr
+        where usr.id = rel.aim_id;
+
+
+    </select>
 </mapper>

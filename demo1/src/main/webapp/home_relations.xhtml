@@ -25,10 +25,11 @@
         yourId:<h:outputLabel  id="hostId" value="#{relationBean.hostId}" /><br/>
         aimId:<h:inputText  id="aimId" value="#{relationBean.aimId}" /><br/>
         <h:commandButton value="add firend" action="#{relationBean.addRelation}" />
-
-
+        <a href="home_relations_list.xhtml">list of your friends</a>
 
     </h:form>
+
+    <hr/>
     <br/>
     <a href="home.xhtml">back</a>
     <br/>
@@ -39,8 +40,18 @@
         <span>#{User.username}</span>
         <br/>
         <span>Email  :</span>
-        <span style="background: burlywood">#{User.email}</span>
+        <span style="background: #dbab6f">#{User.email}</span>
         <br/>
+        <c:forEach items="#{relationBean.onceFriendList}" var="User">
+        <span>id:</span><span>#{User.id}</span>
+            dfasdf
+        </c:forEach>
+
+        <h:form>
+
+            <f:param name="aimId" value="#{User.id}"/>
+
+        </h:form>
         <hr/>
         <br/>
     </c:forEach>

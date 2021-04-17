@@ -56,6 +56,7 @@ public class UserDaoTest {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
         List<User> userList = userDao.getUserList();
 
+        System.out.println(userList.toString());
         for (User user : userList){
             System.out.println(user);
         }
