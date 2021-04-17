@@ -10,8 +10,8 @@
 </f:view>
 <h:form id="form">
 
-    <h:inputText  id="name" value="#{userBean.name}" ></h:inputText><br/>
-    <h:inputText  id="input" binding="#{userBean.password}" /><br/>
+    <h:inputText  id="email" value="#{userBean.email}" ></h:inputText><br/>
+    <h:inputText  id="input" value="#{userBean.password}" /><br/>
     <h:commandButton value="Souhaiter la bienvenue" action="#{userBean.login}" />
 </h:form>
 <a href="inindex.xhtml">back</a>

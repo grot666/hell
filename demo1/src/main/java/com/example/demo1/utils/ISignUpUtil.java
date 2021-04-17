@@ -1,5 +1,5 @@
 package com.example.demo1.utils;
 
-public interface SignUpUtil {
+public interface ISignUpUtil {
     public boolean SignUpResult(String email,String pwd);
 }

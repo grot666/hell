@@ -1,10 +1,10 @@
 package com.example.demo1.bean;
 
 import com.example.demo1.pojo.User;
+import com.example.demo1.utils.Impl.LoginImpl;
 import com.example.demo1.utils.Impl.RegisterImpl;
 import com.example.demo1.utils.Impl.SignUpUtilImpl;
-import com.example.demo1.utils.RegisterUtil;
-import javax.faces.component.html.HtmlInputText;
+import com.example.demo1.utils.Impl.VerifyImpl;
 
 public class UserBean {
     private String name;
@@ -28,9 +28,13 @@ public class UserBean {
     }
 
     public String login(){
-        if ("jack".equals(name)){
+        if (new LoginImpl().loginCheck(email,password)){
 
-            return "success";
+            if (new VerifyImpl().verifyAccount(new User(name,password,email))){
+                return "success";
+            }
+
+            return "failed";
         }else {
 
             return "failed";
