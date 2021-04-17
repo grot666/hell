@@ -5,7 +5,8 @@
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IUserDao">
     <insert id="insertUser" parameterType="com.example.demo1.pojo.User" >
-        INSERT INTO tea.user (username, email, password) VALUES (#{username},#{email},#{password})
+        INSERT INTO tea.user (username, email, password)
+        VALUES (#{username},#{email},#{password})
     </insert>
     <!--    select query-->
    <select id="getUserList" resultType="com.example.demo1.pojo.User">

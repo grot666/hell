@@ -1,9 +1,8 @@
 package com.example.demo1.bean;
 
+import com.example.demo1.controller.UserActionController;
 import com.example.demo1.pojo.User;
-import com.example.demo1.utils.Impl.LoginImpl;
-import com.example.demo1.utils.Impl.RegisterImpl;
-import com.example.demo1.utils.Impl.SignUpUtilImpl;
+
 import com.example.demo1.utils.Impl.VerifyImpl;
 
 import java.io.Serializable;
@@ -12,6 +11,8 @@ public class UserBean implements Serializable {
     private String name;
     private String password;
     private String email;
+    private UserActionController controller =
+            new UserActionController();
 
     public String getName() {
         return name;
@@ -30,29 +31,14 @@ public class UserBean implements Serializable {
     }
 
     public String login(){
-        if (new LoginImpl().loginCheck(email,password)){
 
-            if (new VerifyImpl().verifyAccount(new User(name,password,email))){
-                return "success";
-            }
-
-        }
-        return "failed";
+        return controller.loginAction(new User(name,password,email));
 
     }
-    public String signUp(){
-        if (new SignUpUtilImpl().SignUpResult(email,name)){
 
-            if (new RegisterImpl().registerUser(new User(name,password,email))){
-                return "success";
-            }
-            else {
-                return "error_register";
-            }
-        }
-        else {
-            return "failed";
-        }
+    public String signUp(){
+
+        return controller.signUpAction(new User(name,password,email));
     }
 
     public String getEmail() {
@@ -64,7 +50,6 @@ public class UserBean implements Serializable {
     }
 
     public String logout(){
-       new VerifyImpl().logout();
-        return "index";
+       return controller.logoutAction();
     }
 }

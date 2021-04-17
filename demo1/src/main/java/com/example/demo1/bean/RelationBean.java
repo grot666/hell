@@ -1,5 +1,8 @@
 package com.example.demo1.bean;
 
+import com.example.demo1.controller.RelationController;
+import com.example.demo1.pojo.Relation;
+
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
@@ -8,8 +11,12 @@ public class RelationBean implements Serializable {
 
     private int hostId = (int) context.getExternalContext().getSessionMap().get("userid");
     private int aimId;
+    RelationController controller =
+            new RelationController();
+
     public void addRelation(){
-    System.out.println(aimId+""+hostId);
+    //System.out.println(aimId+""+hostId);
+        controller.addAction(new Relation(hostId,aimId));
 
     }
 

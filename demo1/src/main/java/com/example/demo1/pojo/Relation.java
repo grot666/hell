@@ -5,9 +5,9 @@ public class Relation {
     private int hostId;
     private int aimId;
 
-    public Relation(int i, int i1) {
-        this.aimId = i1;
-        this.hostId = i;
+    public Relation(int hostId, int i) {
+        this.aimId = i;
+        this.hostId = hostId;
 
     }
 

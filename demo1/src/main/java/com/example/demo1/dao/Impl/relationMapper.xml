@@ -5,6 +5,10 @@
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IRelationDao">
 
+    <insert id="inserRelation" parameterType="com.example.demo1.pojo.Relation">
+        INSERT INTO tea.relation (host_id, aim_id) VALUES (#{hostId},#{aimId});
+    </insert>
+
     <select id="getOnceFriends" resultType="com.example.demo1.pojo.Relation">
     select distinct First.host_id, first.aim_id
     from tea.relation First ,tea.relation SECOND
@@ -29,5 +33,8 @@
                 AND First1.host_id=#{param2}) AS b
             )
         where a.aim_id = b.aim_id;
+    </select>
+    <select id="relationExist" resultType="com.example.demo1.pojo.Relation">
+        SELECT * from tea.relation where aim_id = #{aimId} AND host_id = #{hostId}
     </select>
 </mapper>
