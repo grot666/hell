@@ -9,6 +9,13 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class UserDaoTest {
+
+
+
+
+
+
+
     @Test
     public void testGetFriends(){
         SqlSession session = MybatisUtil.getSqlSession();

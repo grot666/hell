@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IRelationDao">
-
+<!--insert Relation-->
     <insert id="inserRelation" parameterType="com.example.demo1.pojo.Relation">
         INSERT INTO tea.relation (host_id, aim_id) VALUES (#{hostId},#{aimId});
     </insert>
-
+<!--get one`s friends-->
     <select id="getOnceFriends" resultType="com.example.demo1.pojo.Relation">
     select distinct First.host_id, first.aim_id
     from tea.relation First ,tea.relation SECOND
@@ -16,7 +16,7 @@
       AND First.host_id = SECOND.aim_id
       AND First.host_id=#{hostId};
     </select>
-
+<!--get common friends-->
     <select id="getCommonFriends" resultType="com.example.demo1.pojo.Relation">
         select 0,a.aim_id
         from(
@@ -34,7 +34,17 @@
             )
         where a.aim_id = b.aim_id;
     </select>
+<!--    check if the relation exist-->
     <select id="relationExist" resultType="com.example.demo1.pojo.Relation">
         SELECT * from tea.relation where aim_id = #{aimId} AND host_id = #{hostId}
+    </select>
+    <select id="getOnceFriendList" resultType="com.example.demo1.pojo.User">
+
+        select distinct user.username,user.password,user.email
+        from tea.relation First ,tea.relation SECOND,tea.user
+        WHERE First.aim_id = SECOND.host_id
+          AND First.host_id = SECOND.aim_id
+          AND First.host_id=#{hostID}
+          AND First.aim_id = user.id;
     </select>
 </mapper>

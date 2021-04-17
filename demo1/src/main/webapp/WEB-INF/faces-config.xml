@@ -78,6 +78,8 @@
 
 
 </managed-bean>
+
+
 <managed-bean>
     <managed-bean-name>relationBean</managed-bean-name>
     <managed-bean-class>com.example.demo1.bean.RelationBean</managed-bean-class>

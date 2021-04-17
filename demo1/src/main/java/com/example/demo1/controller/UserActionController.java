@@ -1,14 +1,29 @@
 package com.example.demo1.controller;
 
+import com.example.demo1.dao.IUserDao;
 import com.example.demo1.pojo.User;
 import com.example.demo1.utils.Impl.LoginImpl;
 import com.example.demo1.utils.Impl.RegisterImpl;
 import com.example.demo1.utils.Impl.SignUpUtilImpl;
 import com.example.demo1.utils.Impl.VerifyImpl;
+import com.example.demo1.utils.MybatisUtil;
+import org.apache.ibatis.session.SqlSession;
 
+import java.util.List;
 
 
 public class UserActionController {
+
+    public static List<User> getAllUserAction() {
+        SqlSession session = MybatisUtil.getSqlSession();
+        IUserDao userDao = session.getMapper(IUserDao.class);
+
+        return userDao.getUserList();
+
+    }
+
+
+
 
     public String logoutAction(){
         new VerifyImpl().logout();

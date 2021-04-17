@@ -6,9 +6,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h:outputLabel value="User List"/>
 </f:view>
 <h:body>
+    <a href="home.xhtml">back</a>
+    <br/>
+<c:forEach items="#{userBean.userList}" var="User">
+    <hr/>
+    <span>username  :</span>
+    <span>#{User.username}</span>
+    <br/>
+    <span>Email  :</span>
+    <span style="background: burlywood">#{User.email}</span>
+    <br/>
+    <hr/>
+    <br/>
+</c:forEach>
+    <a href="home.xhtml">back</a>
 
 
 </h:body>
