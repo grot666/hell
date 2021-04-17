@@ -5,6 +5,19 @@ public class Relation {
     private int hostId;
     private int aimId;
 
+    public Relation(int i, int i1) {
+        this.aimId = i1;
+        this.hostId = i;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Relation{" +
+                "hostId=" + hostId +
+                ", aimId=" + aimId +
+                '}';
+    }
 
     public int getHostId() {
         return hostId;

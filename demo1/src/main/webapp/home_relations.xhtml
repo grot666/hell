@@ -10,5 +10,24 @@
 </f:view>
 <h:body>
     <a href="home.xhtml">back</a>
+    <br/>
+    <p>your id is #{userid} and session id is #{session.id}</p>
+    <h:form>
+
+
+        <span>
+            input the id of a user
+            and you can be his/her/its semi-friend,
+            and if that user add your id too
+            then you are linear correlation
+        </span>
+        <br/>
+        yourId:<h:outputLabel  id="hostId" value="#{relationBean.hostId}" /><br/>
+        aimId:<h:inputText  id="aimId" value="#{relationBean.aimId}" /><br/>
+        <h:commandButton value="add firend" action="#{relationBean.addRelation}" />
+
+
+
+    </h:form>
 </h:body>
 </html>

@@ -5,4 +5,29 @@
 <!--bind a Dao/Mapper interface-->
 <mapper namespace="com.example.demo1.dao.IRelationDao">
 
+    <select id="getOnceFriends" resultType="com.example.demo1.pojo.Relation">
+    select distinct First.host_id, first.aim_id
+    from tea.relation First ,tea.relation SECOND
+    WHERE First.aim_id = SECOND.host_id
+      AND First.host_id = SECOND.aim_id
+      AND First.host_id=#{hostId};
+    </select>
+
+    <select id="getCommonFriends" resultType="com.example.demo1.pojo.Relation">
+        select 0,a.aim_id
+        from(
+             (select distinct first.aim_id
+              from tea.relation as First ,tea.relation as SECOND
+              WHERE First.aim_id = SECOND.host_id
+                AND First.host_id = SECOND.aim_id
+                AND First.host_id=#{param1}) AS a
+                ,
+             (select distinct  First1.aim_id
+              from tea.relation as First1 ,tea.relation as SECOND1
+              WHERE First1.aim_id = SECOND1.host_id
+                AND First1.host_id = SECOND1.aim_id
+                AND First1.host_id=#{param2}) AS b
+            )
+        where a.aim_id = b.aim_id;
+    </select>
 </mapper>

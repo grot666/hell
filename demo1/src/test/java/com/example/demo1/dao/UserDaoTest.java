@@ -1,5 +1,6 @@
 package com.example.demo1.dao;
 
+import com.example.demo1.pojo.Relation;
 import com.example.demo1.pojo.User;
 import com.example.demo1.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,20 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class UserDaoTest {
+    @Test
+    public void testGetFriends(){
+        SqlSession session = MybatisUtil.getSqlSession();
+        IRelationDao relationDao = session.getMapper(IRelationDao.class);
+
+        List<Relation> relations;
+        //relations = relationDao.getOnceFriends(109);
+        relations = relationDao.getCommonFriends(110,113);
+        for (Relation relation :relations){
+            System.out.println(relation.toString());
+        }
+
+
+    }
     @Test
     public void getId(){
         SqlSession session = MybatisUtil.getSqlSession();
