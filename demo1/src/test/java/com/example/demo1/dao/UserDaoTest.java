@@ -9,6 +9,14 @@ import java.util.List;
 
 public class UserDaoTest {
     @Test
+    public void getId(){
+        SqlSession session = MybatisUtil.getSqlSession();
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        int i = userDao.returnUserId("1");
+        System.out.println(i);
+
+    }
+    @Test
     public void testInsert(){
         SqlSession session = MybatisUtil.getSqlSession();
         IUserDao userDao = session.getMapper(IUserDao.class);

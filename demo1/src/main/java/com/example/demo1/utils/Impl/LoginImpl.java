@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class LoginImpl implements ILoginUtil {
+
     @Override
     public boolean loginCheck(String email, String password) {
         //get sqlSession Object
@@ -23,6 +24,7 @@ public class LoginImpl implements ILoginUtil {
             //email should be unique
         }
         sqlSession.close();
+
         return false;
     }
 }

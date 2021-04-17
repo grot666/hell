@@ -11,4 +11,7 @@
    <select id="getUserList" resultType="com.example.demo1.pojo.User">
        SELECT * from tea.user
    </select>
+    <select id="returnUserId" resultType="java.lang.Integer">
+        SELECT id from tea.user where email = #{email};
+    </select>
 </mapper>

@@ -34,11 +34,8 @@ public class UserBean {
                 return "success";
             }
 
-            return "failed";
-        }else {
-
-            return "failed";
         }
+        return "failed";
 
     }
     public String signUp(){
@@ -62,5 +59,10 @@ public class UserBean {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String logout(){
+       new VerifyImpl().logout();
+        return "index";
     }
 }

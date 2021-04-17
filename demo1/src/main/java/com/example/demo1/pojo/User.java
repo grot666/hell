@@ -1,14 +1,18 @@
 package com.example.demo1.pojo;
 
+import com.example.demo1.utils.Impl.UserIdGetterImpl;
+
 public class User {
     private String username;
     private String password;
     private String email;
+    private int id;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+
     }
 
     public String getUsername() {
@@ -42,5 +46,14 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return new UserIdGetterImpl().setUserId(this.email);
+    }
+
+    public void setId() {
+        this.id = new UserIdGetterImpl().setUserId(this.email);
+
     }
 }
