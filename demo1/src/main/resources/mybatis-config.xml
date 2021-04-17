@@ -17,5 +17,8 @@
 <!--    每一个Mapper都需要注册-->
     <mappers>
         <mapper resource="com/example/demo1/dao/Impl/userMapper.xml"/>
+        <mapper resource="com/example/demo1/dao/Impl/relationMapper.xml"/>
+        <mapper resource="com/example/demo1/dao/Impl/postsMapper.xml"/>
+
     </mappers>
 </configuration>

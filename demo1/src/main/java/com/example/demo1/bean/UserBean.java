@@ -6,7 +6,9 @@ import com.example.demo1.utils.Impl.RegisterImpl;
 import com.example.demo1.utils.Impl.SignUpUtilImpl;
 import com.example.demo1.utils.Impl.VerifyImpl;
 
-public class UserBean {
+import java.io.Serializable;
+
+public class UserBean implements Serializable {
     private String name;
     private String password;
     private String email;

@@ -7,7 +7,21 @@ CREATE TABLE   user
 
 ) AUTO_INCREMENT = 100;
 
-INSERT INTO tea.user (username, email, password) VALUES (#{username},#{email},#{password}
+
+# INSERT INTO tea.user (username, email, password) VALUES (#{username},#{email},#{password});
+
+CREATE TABLE relation(
+                         host_id int,
+                         aim_id int
+);
+
+
+# select distinct first.aim_id  from relation First ,relation SECOND WHERE First.aim_id = SECOND.host_id AND First.host_id = SECOND.aim_id AND First.host_id=113;
+# get friends
+
+
+
+
 
 
 

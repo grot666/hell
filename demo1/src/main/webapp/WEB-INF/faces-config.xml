@@ -76,7 +76,13 @@
     <managed-bean-class>com.example.demo1.bean.UserBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
 
-</managed-bean>
 
+</managed-bean>
+<managed-bean>
+    <managed-bean-name>relationBean</managed-bean-name>
+    <managed-bean-class>com.example.demo1.bean.RelationBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+
+</managed-bean>
   
 </faces-config>
